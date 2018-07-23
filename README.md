@@ -1,3 +1,14 @@
+Does simple geo mapping, to make it work you need to get google map API key:
+
+https://developers.google.com/maps/documentation/javascript/get-api-key
+
+
+In map.module.ts change the key to yours
+
+ AgmCoreModule.forRoot({
+      apiKey: 'hide'
+    })
+
 # Angular6GeoMapping
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
