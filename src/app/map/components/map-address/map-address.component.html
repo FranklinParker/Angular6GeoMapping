@@ -13,12 +13,14 @@
              [(ngModel)]="city"
              name="city"
              class="form-control">
-
     </div>
   </div>
 </div>
 <div class="row m-2">
-  <div class="col"><button class="btn-secondary">Find On Map</button></div>
+  <div class="col">
+    <button class="btn-secondary"
+            (click)="onMapLocation()">Find On Map</button>
+  </div>
 </div>
 
 
