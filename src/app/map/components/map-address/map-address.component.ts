@@ -18,14 +18,7 @@ export class MapAddressComponent implements OnInit {
 
   onMapLocation() {
     const location = this.city + ', ' + this.street;
-    alert(location);
-    this.mapService.geocodeLocation(location)
-      .subscribe((coord) => {
-          console.log('got coord', coord);
-        },
-        (err) => {
-          alert(err);
-        });
+    this.mapService.newLocation(location);
   }
 
 }
