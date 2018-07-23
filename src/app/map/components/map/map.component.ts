@@ -44,6 +44,7 @@ export class MapComponent implements OnInit, OnDestroy {
           console.log('got coord', coord);
           this.lat = coord.lat;
           this.lng = coord.lng;
+          this.isPositionError = false;
           this.ref.detectChanges();
         },
         (err) => {
