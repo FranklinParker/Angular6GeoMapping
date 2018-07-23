@@ -1,19 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {MapService} from '../../service/map.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
   lat = 0;
   lng = 0;
   isPositionError = false;
-  constructor() { }
+  sub: Subscription;
+
+  constructor(private mapService: MapService) {
+
+  }
 
   ngOnInit() {
+    this.sub = this.mapService.getLocationObservable()
+      .subscribe((location: string) => {
+        console.log(' got new location', location);
+      });
   }
-  onMapReady(){
+   ngOnDestroy() {
+    this.sub.unsubscribe();
+   }
+
+  onMapReady() {
 
   }
 

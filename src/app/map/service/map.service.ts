@@ -1,13 +1,34 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MapService {
-  geoCoder: any;
+  private locationChangedSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private geoCoder: any;
 
   constructor() {
+  }
+
+  /***
+   * get location Observable
+   *
+   *
+   * @returns {Observable<string>}
+   */
+  public getLocationObservable(): Observable<string> {
+    return this.locationChangedSubject.asObservable();
+  }
+
+  /**
+   * push a new location
+   *
+   *
+   * @param {string} location
+   */
+  public newLocation(location: string){
+    this.locationChangedSubject.next(location);
   }
 
   /**
