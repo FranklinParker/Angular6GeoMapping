@@ -48,6 +48,7 @@ export class MapComponent implements OnInit, OnDestroy {
         },
         (err) => {
           this.isPositionError = true;
+          this.ref.detectChanges();
         });
 
   }
